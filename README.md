@@ -19,26 +19,18 @@
 func main() {
 	fmt.Println("counting")
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 2; i++ {
 		defer fmt.Println(i)
 	}
 
 	fmt.Println("done")
 }
 
-Output: 
-counting
-done
-9
-8
-7
-6
-5
-4
-3
-2
-1
-0
+// Output: 
+// counting
+// done
+// 1
+// 0
 ```
 
 ### In-class Notes ###
