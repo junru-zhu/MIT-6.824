@@ -3,7 +3,7 @@
 ## Lecture 1
 
 ## Lecture 2
-### Pre-class Assignment: A Tour of Go ###
+### Pre-class Assignment: [A Tour of Go](https://tour.golang.org/welcome/1) ###
 
 **Questions**
 
