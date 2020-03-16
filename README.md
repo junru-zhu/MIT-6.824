@@ -70,4 +70,11 @@ len=4 cap=6 [2 3 5 7]
 len=2 cap=4 [5 7]
 ```
 
+3. Appending to a slice: The append built-in function appends elements to the end of a slice. If it has sufficient capacity, the destination is resliced to accommodate the new elements. If it does not, a new underlying array will be allocated. Append returns the updated slice. It is therefore necessary to store the result of append, often in the variable holding the slice itself:
+```
+func append(slice []Type, elems ...Type) []Type
+slice = append(slice, elem1, elem2)
+slice = append(slice, anotherSlice...)
+```
+
 ### In-class Notes ###
