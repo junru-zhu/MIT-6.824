@@ -77,4 +77,32 @@ slice = append(slice, elem1, elem2)
 slice = append(slice, anotherSlice...)
 ```
 
+
+**Exercises**
+
+1. Exercise: Slices
+```
+package main
+
+import "golang.org/x/tour/pic"
+
+func Pic(dx, dy int) [][]uint8 {
+	pixel := make([][]uint8, dy)
+	data := make([]uint8, dx)
+	
+	for i := range pixel{
+		for j := range data{
+			data[j] = uint8(i^j)
+		}
+		pixel[i] = data
+	}
+	return pixel
+}
+
+func main() {
+	pic.Show(Pic)
+}
+```
+
+
 ### In-class Notes ###
