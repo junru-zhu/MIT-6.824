@@ -152,6 +152,40 @@ func main() {
 ```
 3. Exercise: Fibonacci closure
 ```
+package main
+
+import "fmt"
+
+// fibonacci is a function that returns
+// a function that returns an int.
+func fibonacci() func() int {
+	prev := 0
+	curr := 1
+	i := 0
+	return func() int{
+		switch i{
+			case 0:
+				i++
+				return prev
+			case 1:
+				i++
+				return curr
+			default:
+				i++
+				tmp := prev + curr
+				prev = curr
+				curr = tmp
+				return curr
+		}
+	}
+}
+
+func main() {
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
+	}
+}
 ```
 
 
