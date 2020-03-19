@@ -259,5 +259,38 @@ func main() {
 
 ```
 
+5. Exercise: Errors
+```
+package main
+
+import (
+	"fmt"
+)
+
+type ErrNegativeSqrt float64
+
+func (e ErrNegativeSqrt) Error() string{
+	return "cannot Sqrt negative number: " + fmt.Sprint(float64(e))
+}
+
+func Sqrt(x float64) (float64, error) {
+	if x >= 0{
+		z := 1.0
+		i := 0
+		for ; z*z < x || i < 10; z -= (z*z - x) / (2 * z) {
+			i++
+		}
+		return z, nil
+	}
+
+	return x, ErrNegativeSqrt(x)
+}
+
+func main() {
+	fmt.Println(Sqrt(2))
+	fmt.Println(Sqrt(-2))
+}
+```
+
 
 ### In-class Notes ###
