@@ -292,5 +292,69 @@ func main() {
 }
 ```
 
+6. Exercise: Readers
+```
+package main
+
+import "golang.org/x/tour/reader"
+
+type MyReader struct{}
+
+// TODO: Add a Read([]byte) (int, error) method to MyReader.
+func (r MyReader) Read(bytes []byte) (int, error){
+	for i:= range bytes{
+		bytes[i] = 65
+	} 
+	return len(bytes), nil
+}
+
+func main() {
+	reader.Validate(MyReader{})
+}
+
+```
+
+7. Exercise: Equivalent Binary Trees
+```
+package main
+
+import (
+	"golang.org/x/tour/tree"
+	"fmt"
+)
+
+// Walk walks the tree t sending all values
+// from the tree to the channel ch.
+func Walk(t *tree.Tree, ch chan int){
+	if t == nil{
+		return
+	}
+	Walk(t.Left, ch)
+	ch <- t.Value
+	Walk(t.Right, ch)
+}
+
+// Same determines whether the trees
+// t1 and t2 contain the same values.
+func Same(t1, t2 *tree.Tree) bool{
+	ch1 := make(chan int, 10)
+	ch2 := make(chan int, 10)
+	go Walk(t1, ch1)
+	go Walk(t2, ch2)
+	for i := 0; i < 10; i++ {
+		if (<-ch1) != (<-ch2){
+			return false
+		}
+	}
+	return true
+}
+
+func main() {
+	fmt.Println(Same(tree.New(1), tree.New(2)))
+	return
+}
+```
+I wrote this code on my own. It is the first time that I feel Go is quite a charming programming language. I feel that I fall in love with this language now!
+
 
 ### In-class Notes ###
